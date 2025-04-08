@@ -58,6 +58,25 @@ produits.forEach(element => {
 const productsContainer = document.createElement('div');
 productsContainer.className = 'products-grid';
 
+let PanierNbr = 0;
+
+const FichePanier = document.createElement ('div')
+FichePanier.className = 'fiche-panier'
+FichePanier.innerHTML = `
+    <img src="images/126083.png" alt="Logo de panier">
+    <p id="panier-compteur">Vous avez 0 objets dans votre panier</p>
+`
+
+function incrementPanier() {
+    const compteurElement = document.getElementById('panier-compteur');
+    if (compteurElement) {
+        compteurElement.innerHTML= `<span>Vous avez ${PanierNbr} objets dans votre panier</span>
+        <button class="boutonreset">Vider votre panier</bouton>`;
+    }
+}
+
+document.body.appendChild(FichePanier)
+
 
 produits.forEach((produit) => {
     const FicheProduit = document.createElement('div');
@@ -66,21 +85,15 @@ produits.forEach((produit) => {
             <p>${produit.name}</p>
             <img src=${produit.Image} alt="Placeholder">
             <p>${produit.price} €</p>
-            <button class="boutonachat">Ajouter au panier</button>
-            `;
+            <button class="boutonachat">Ajouter au panier</button>`;
+    
+    const boutonachat = FicheProduit.querySelector('.boutonachat')
+    boutonachat.addEventListener("click", function(){ PanierNbr++;
+        console.log('Added:', produit.name);
+        incrementPanier();        
+    })
+
     productsContainer.appendChild(FicheProduit)})
 
 document.body.appendChild(productsContainer)
-
-const FichePanier = document.createElement ('div')
-FichePanier.className = 'fiche-panier'
-FichePanier.innerHTML = `
-    <img src="images/126083.png" alt="Logo de panier">
-    <p>Vous avez 0 objets dans votre panier</p>
-`
-
-document.body.appendChild(FichePanier)
-
-let button = document.querySelectorAll("fiche button")
-console.log (button)
 
