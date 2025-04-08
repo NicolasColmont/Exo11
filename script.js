@@ -60,6 +60,8 @@ productsContainer.className = 'products-grid';
 
 let PanierNbr = 0;
 
+let contenupanier = []
+
 const FichePanier = document.createElement ('div')
 FichePanier.className = 'fiche-panier'
 FichePanier.innerHTML = `
@@ -70,8 +72,9 @@ FichePanier.innerHTML = `
 function incrementPanier() {
     const compteurElement = document.getElementById('panier-compteur');
     if (compteurElement) {
-        compteurElement.innerHTML= `<span>Vous avez ${PanierNbr} objets dans votre panier</span>
-        <button class="boutonreset">Vider votre panier</bouton>`;
+        compteurElement.innerHTML= `<p>Vous avez ${PanierNbr} objets dans votre panier</p>
+        <button class="boutonreset">Vider votre panier</bouton>
+        `;
     }
 }
 
@@ -88,12 +91,19 @@ produits.forEach((produit) => {
             <button class="boutonachat">Ajouter au panier</button>`;
     
     const boutonachat = FicheProduit.querySelector('.boutonachat')
-    boutonachat.addEventListener("click", function(){ PanierNbr++;
+    boutonachat.addEventListener("click", function(){
+        PanierNbr++;
+        contenupanier.push (produit.name)
         console.log('Added:', produit.name);
-        incrementPanier();        
+        incrementPanier();
     })
 
     productsContainer.appendChild(FicheProduit)})
 
 document.body.appendChild(productsContainer)
 
+console.log(contenupanier)
+
+/*boutonreset.addEventListener('click', function(){
+
+})*/
