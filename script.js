@@ -52,7 +52,7 @@ const produits = [
 ];
 
 produits.forEach(element => {
-    element.Image = "Images\Clavier-mecanique-sans-fil-Azerty-Spirit-Of-Gamer-XPERT-K200-Bluetooth-Noir.jpg"
+    element.Image = "images/clavier-mecanique-sans-fil-azerty-spirit-of-gamer-xpert-k200-bluetooth-noir.jpg"
 });
 
 const productsContainer = document.createElement('div');
@@ -65,9 +65,14 @@ produits.forEach((produit) => {
     FicheProduit.innerHTML = `  
             <p>${produit.name}</p>
             <img src=${produit.Image} alt="Placeholder">
-            <p>${produit.price}</p>
+            <p>${produit.price} €</p>
             <button>Ajouter au panier</button>
             `;
     productsContainer.appendChild(FicheProduit)})
 
 document.body.appendChild(productsContainer)
+
+const FichePanier = document.createElement ('div')
+FichePanier.className = 'fiche-panier'
+
+document.appendChild(body)
