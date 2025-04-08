@@ -66,7 +66,7 @@ produits.forEach((produit) => {
             <p>${produit.name}</p>
             <img src=${produit.Image} alt="Placeholder">
             <p>${produit.price} €</p>
-            <button>Ajouter au panier</button>
+            <button class="boutonachat">Ajouter au panier</button>
             `;
     productsContainer.appendChild(FicheProduit)})
 
@@ -74,5 +74,13 @@ document.body.appendChild(productsContainer)
 
 const FichePanier = document.createElement ('div')
 FichePanier.className = 'fiche-panier'
+FichePanier.innerHTML = `
+    <img src="images/126083.png" alt="Logo de panier">
+    <p>Vous avez 0 objets dans votre panier</p>
+`
 
-document.appendChild(body)
+document.body.appendChild(FichePanier)
+
+let button = document.querySelectorAll("fiche button")
+console.log (button)
+
